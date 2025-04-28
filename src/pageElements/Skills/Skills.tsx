@@ -61,14 +61,6 @@ const Skills = () => {
   );
 };
 
-function getSkillAnimation(startAnimation: boolean, idx: number) {
-  return {
-    initial: { y: '3vw', opacity: 0 },
-    animate: startAnimation ? { y: 0, opacity: 1 } : {},
-    transition: { delay: 0.05 * idx, duration: 0.4, ease: 'easeOut' },
-  };
-}
-
 interface SkillProps {
   name: string;
   image: string;
@@ -90,5 +82,13 @@ const Skill = ({ name, image, idx, startAnimation }: SkillProps) => {
     </motion.div>
   );
 };
+
+function getSkillAnimation(startAnimation: boolean, idx: number) {
+  return {
+    initial: { y: '3vw', opacity: 0 },
+    animate: startAnimation ? { y: 0, opacity: 1 } : {},
+    transition: { delay: 0.05 * idx, duration: 0.4, ease: 'easeOut' },
+  };
+}
 
 export default Skills;
