@@ -19,7 +19,7 @@ const About = () => {
           <div className={css.aboutInfoContainer}>
             <motion.h1
               className={css.aboutTextTitle}
-              initial={{ x: 150, opacity: 0 }}
+              initial={{ x: '6vw', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
             >
@@ -27,7 +27,7 @@ const About = () => {
             </motion.h1>
             <motion.p
               className={css.aboutTextDescription}
-              initial={{ x: 150, opacity: 0 }}
+              initial={{ x: '6vw', opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1, duration: 0.4, ease: 'easeOut' }}
             >
@@ -46,13 +46,13 @@ const PhotoAndNameText = () => {
       <motion.img
         src={fullBody}
         className={css.photo}
-        initial={{ x: -50, y: 200, opacity: 0.5 }}
+        initial={{ x: '-3vw', y: '8vw', opacity: 0.5 }}
         animate={{ x: 0, y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       />
       <motion.h1
         className={css.nameText}
-        initial={{ x: 150, opacity: 0 }}
+        initial={{ x: '6vw', opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
@@ -68,7 +68,7 @@ const LinkIcons = () => {
   return (
     <div className={css.linkIconsContainer}>
       <motion.div
-        initial={{ x: 100, scale: 0.2, opacity: 0 }}
+        initial={{ x: '4vw', scale: 0.2, opacity: 0 }}
         animate={{ x: 0, scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
@@ -81,7 +81,7 @@ const LinkIcons = () => {
         </a>
       </motion.div>
       <motion.div
-        initial={{ x: 100, scale: 0.2, opacity: 0 }}
+        initial={{ x: '4vw', scale: 0.2, opacity: 0 }}
         animate={{ x: 0, scale: 1, opacity: 1 }}
         transition={{ delay: 0.1, duration: 0.5, ease: 'easeOut' }}
       >
