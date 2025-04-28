@@ -13,6 +13,14 @@ export interface ExperienceBoxProps {
   idx: number;
 }
 
+function getExperienceBoxAnimation(isEven: boolean, isInView: boolean) {
+  return {
+    initial: { x: isEven ? '-12vw' : '12vw', opacity: 0 },
+    animate: isInView ? { x: 0, opacity: 1 } : {},
+    transition: { delay: 0.3, duration: 0.4, ease: 'easeOut' },
+  };
+}
+
 // ------------------------- DESKTOP ------------------------------
 
 export const ExperienceBox = ({
@@ -66,14 +74,6 @@ export const ExperienceBox = ({
     </div>
   );
 };
-
-function getExperienceBoxAnimation(isEven: boolean, isInView: boolean) {
-  return {
-    initial: { x: isEven ? '-12vw' : '12vw', opacity: 0 },
-    animate: isInView ? { x: 0, opacity: 1 } : {},
-    transition: { delay: 0.3, duration: 0.4, ease: 'easeOut' },
-  };
-}
 
 // ------------------------- MOBILE ------------------------------
 
