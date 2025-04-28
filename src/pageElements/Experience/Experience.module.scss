@@ -16,11 +16,11 @@
     align-self: flex-end;
 }
 
-.experiencePointLineContainer {
+.experienceBoxLineContainer {
     display: flex;
     align-items: flex-end;
 
-    .experiencePointContainer {
+    .experienceBoxContainer {
         display: flex;
         width: 20vw;
         height: 11vw;
@@ -31,26 +31,26 @@
         flex-direction: column;
         cursor: pointer;
 
-        .experiencePointDates {
+        .experienceBoxDates {
             font-size: 1.2vw;
             margin: 0;
             padding: .5vw;
         }
         
-        .experiencePointImageTitle {
+        .experienceBoxImageTitle {
             gap: 1vw;
             display: flex;
             justify-content: space-around;
             align-items: center;
 
-            .experiencePointImage {
+            .experienceBoxImage {
                 height: 8vw;
                 object-fit: cover;
                 max-width: 35%;
                 max-height: 8vw;
                 height: auto;
             }
-            .experiencePointTitle {
+            .experienceBoxTitle {
                 font-size: 1.5vw;
                 max-width: 40%;
             }

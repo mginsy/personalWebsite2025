@@ -7,7 +7,7 @@ import accentureLogo from './images/accenture.png';
 import edwardsLogo from './images/edwards.png';
 import palantirLogo from './images/palantir.png';
 
-const EXPERIENCES: Omit<ExperiencePointProps, 'idx'>[] = [
+const EXPERIENCES: Omit<ExperienceBoxProps, 'idx'>[] = [
   {
     title: 'Full Stack Software Engineer',
     image: palantirLogo,
@@ -34,21 +34,22 @@ const EXPERIENCES: Omit<ExperiencePointProps, 'idx'>[] = [
   },
 ];
 
+const EXPERIENCE_TITLE_ANIMATION = {
+  initial: { y: '-3vw', opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: { duration: 0.4, ease: 'easeOut' },
+};
+
 const Experience = () => {
   return (
     <Element name="experience">
       <section className={css.experienceSection}>
-        <motion.h1
-          className={css.sectionTitle}
-          initial={{ y: '-3vw', opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
+        <motion.h1 className={css.sectionTitle} {...EXPERIENCE_TITLE_ANIMATION}>
           Experience
         </motion.h1>
         <div className={css.experiencesContainer}>
           {EXPERIENCES.map((experience, idx) => (
-            <ExperiencePoint key={idx} idx={idx} {...experience} />
+            <ExperienceBox key={idx} idx={idx} {...experience} />
           ))}
         </div>
       </section>
@@ -56,7 +57,15 @@ const Experience = () => {
   );
 };
 
-interface ExperiencePointProps {
+function getExperienceBoxAnimation(isEven: boolean, isInView: boolean) {
+  return {
+    initial: { x: isEven ? '-12vw' : '12vw', opacity: 0 },
+    animate: isInView ? { x: 0, opacity: 1 } : {},
+    transition: { delay: 0.3, duration: 0.4, ease: 'easeOut' },
+  };
+}
+
+interface ExperienceBoxProps {
   title: string;
   image: string;
   dates: string;
@@ -64,47 +73,58 @@ interface ExperiencePointProps {
   idx: number;
 }
 
-const ExperiencePoint = ({ title, image, dates, link, idx }: ExperiencePointProps) => {
+const ExperienceBox = ({ title, image, dates, link, idx }: ExperienceBoxProps) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -40% 0px' });
-  const isLeft = idx % 2 == 0;
+  const isEven = idx % 2 == 0;
   const handleClick = () => {
     window.open(link, '_blank');
   };
 
-  const experiencePoint = (
+  const experienceBoxAnimation = React.useMemo(
+    () => getExperienceBoxAnimation(isEven, isInView),
+    [isEven, isInView, getExperienceBoxAnimation]
+  );
+
+  const experienceBox = (
     <motion.div
       ref={ref}
-      className={css.experiencePointContainer}
-      initial={{ x: isLeft ? '-12vw' : '12vw', opacity: 0 }}
-      animate={isInView ? { x: 0, opacity: 1 } : {}}
-      transition={{ delay: 0.3, duration: 0.4, ease: 'easeOut' }}
+      className={css.experienceBoxContainer}
       onClick={handleClick}
+      {...experienceBoxAnimation}
     >
-      <p className={css.experiencePointDates}>{dates}</p>
-      <div className={css.experiencePointImageTitle}>
-        <img className={css.experiencePointImage} src={image} alt={'experience image'} />
-        <p className={css.experiencePointTitle}>{title}</p>
+      <p className={css.experienceBoxDates}>{dates}</p>
+      <div className={css.experienceBoxImageTitle}>
+        <img className={css.experienceBoxImage} src={image} alt={'experience image'} />
+        <p className={css.experienceBoxTitle}>{title}</p>
       </div>
     </motion.div>
   );
 
   return (
-    <div className={css.experiencePointLineContainer}>
-      {isLeft ? (
+    <div className={css.experienceBoxLineContainer}>
+      {isEven ? (
         <>
-          {experiencePoint}
+          {experienceBox}
           <ConnectingLine idx={idx} />
         </>
       ) : (
         <>
           <ConnectingLine idx={idx} />
-          {experiencePoint}
+          {experienceBox}
         </>
       )}
     </div>
   );
 };
+
+function getConnectingLineAnimation(isEven: boolean, isInView: boolean) {
+  return {
+    initial: { x: 0 },
+    animate: isInView ? { x: isEven ? '100%' : '-100%' } : {},
+    transition: { duration: 0.5 },
+  };
+}
 
 interface ConnectingLineProps {
   idx: number;
@@ -113,20 +133,18 @@ interface ConnectingLineProps {
 const ConnectingLine = ({ idx }: ConnectingLineProps) => {
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, margin: '0px 0px -55% 0px' });
-  console.log(isInView);
   if (idx == EXPERIENCES.length - 1) {
     return null;
   }
+  const isEven = idx % 2 == 0;
+  const connectingLineAnimation = React.useMemo(
+    () => getConnectingLineAnimation(isEven, isInView),
+    [isEven, isInView, getConnectingLineAnimation]
+  );
   return (
     <div className={css.maskContainer}>
-      <div className={idx % 2 == 0 ? css.connectingLineRight : css.connectingLineLeft} />
-      <motion.div
-        ref={ref}
-        initial={{ x: 0 }}
-        animate={isInView ? { x: idx % 2 == 0 ? '100%' : '-100%' } : {}}
-        transition={{ duration: 0.5 }}
-        className={css.maskOverlay}
-      />
+      <div className={isEven ? css.connectingLineRight : css.connectingLineLeft} />
+      <motion.div ref={ref} className={css.maskOverlay} {...connectingLineAnimation} />
     </div>
   );
 };
