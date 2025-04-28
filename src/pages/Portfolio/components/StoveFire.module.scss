@@ -1,0 +1,26 @@
+.fire {
+    position: absolute;
+    background: linear-gradient(45deg, #ff4500, #ff6347);
+    clip-path: polygon(50% 0%, 70% 40%, 50% 100%, 30% 40%);
+    animation: flicker 1.5s infinite alternate
+}
+
+// ------------------------- DESKTOP ------------------------------
+
+.fireDesktop {
+    @extend .fire;
+    width: 4vw;
+    height: 20vw;
+    bottom: -3.7vw;
+    left: 4.25vw;
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.fireMobile {
+    @extend .fire;
+    width: 12vw;
+    height: 60vw;
+    bottom: -11.1vw;
+    left: 12.75vw;
+}
