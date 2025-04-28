@@ -18,33 +18,6 @@
     padding-bottom: 2vw;
 }
 
-.skillContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: .2vw $off-white solid;
-    width: 12vw;
-    height: 12vw;
-    border-radius: 3vw; 
-
-    .skillName {
-        font-size: 1.3vw;
-        margin: .3vw;
-    }
-    
-    .skillImageContainer {
-        display: flex;
-        flex-grow: 1;
-    
-        .skillImage {
-            max-height: 7vw;
-            max-width: 7vw;
-            padding: 1vw 0;
-            object-fit: contain;
-        }
-    }
-}
-
 // ------------------------- MOBILE ------------------------------
 
 .skillsContainerMobile {
@@ -53,31 +26,4 @@
     width: 82vw;
     flex-wrap: wrap;
     padding-bottom: 6vw;
-}
-
-.skillContainerMobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: .7vw $off-white solid;
-    width: 22vw;
-    height: 22vw;
-    border-radius: 3vw; 
-
-    .skillNameMobile {
-        font-size: 3vw;
-        margin: 1vw;
-    }
-    
-    .skillImageContainerMobile {
-        display: flex;
-        flex-grow: 1;
-    
-        .skillImageMobile {
-            max-height: 12vw;
-            max-width: 12vw;
-            padding: 1vw 0;
-            object-fit: contain;
-        }
-    }
 }
