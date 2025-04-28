@@ -1,0 +1,182 @@
+@import "../../styles/variables.module.scss";
+@import "../../styles/components.module.scss";
+
+$light-pan-color: #202020;
+$dark-pan-color: #181818;
+
+.portfolioSection {
+    @extend .section;
+    background-color: #2f3130;
+    height: fit-content;
+    align-items: center;
+    padding-bottom: 8vw;
+}
+
+.portfolioContainer {
+    padding-top: 8vw;
+    display: flex;
+    gap: 15vw;
+    width: 72vw;
+    flex-wrap: wrap;
+    padding-bottom: 1vw;
+}
+
+.panContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 15vw;
+    z-index: 5;
+    top: -1.7vw;
+    left: -1.7vw;
+    cursor: pointer;
+
+    .pan {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15vw;
+        height: 15vw;
+        background-color: $dark-pan-color;
+        border-radius: 50%;
+        z-index: 2;
+    
+        .innerPan {
+            width: 13vw;
+            height: 13vw;
+            background-color: $light-pan-color;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            rotate: -145deg;
+
+            .panText {
+                font-size: 1vw;
+            }
+
+            .panPhoto {
+                max-width: 8vw;
+                max-height: 8vw;
+                border-radius: 1vw;
+                margin-bottom: 1vw;
+            }
+        }
+    }
+    
+    .handle {
+        position: absolute;
+        width: 3vw;
+        height: 17vw;
+        background-color: $light-pan-color;
+        border-radius: 2vw;
+        bottom: -10vw;
+        z-index: 1;
+    }    
+}
+
+.spoke {
+    position: absolute;
+    background-color: $black;
+}
+
+.verticalSpoke {
+    @extend .spoke;
+    width: .5vw;
+    height: 5vw;
+}
+
+.horizontalSpoke {
+    @extend .spoke;
+    width: 5vw;
+    height: .5vw;
+}
+
+.stove {
+    position: relative;
+    width: 12.5vw;
+    height: 12.5vw;
+    border-radius: 50%;
+    border: .5vw $black solid;
+    rotate: 45deg;
+
+    .spoke1 {
+        @extend .verticalSpoke;
+        bottom: -2.5vw;
+        right: 6vw;
+    }
+
+    .spoke2 {
+        @extend .verticalSpoke;
+        top: -2.5vw;
+        right: 6vw;
+    }
+
+    .spoke3 {
+        @extend .horizontalSpoke;
+        top: 6vw;
+        right: -2.5vw;
+    }
+
+    .spoke4 {
+        @extend .horizontalSpoke;
+        top: 6vw;
+        left: -2.5vw;
+    }
+
+    .fire {
+        position: absolute;
+        width: 4vw;
+        height: 20vw;
+        bottom: -3.7vw;
+        left: 4.25vw;
+        background: linear-gradient(45deg, #ff4500, #ff6347);
+        clip-path: polygon(50% 0%, 70% 40%, 50% 100%, 30% 40%);
+        animation: flicker 1.5s infinite alternate
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.7;
+        transform: scale(1);
+    }
+    25% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+    75% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+}
+
+.button {
+    position: absolute;
+    top: -8.5vw;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    background-color: #fca5a5; /* off red */
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buttonOn {
+    background-color: #ef4444; /* bright red */
+    box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.7); /* red glow */
+}
