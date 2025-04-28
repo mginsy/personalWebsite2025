@@ -27,16 +27,17 @@ const PORTFOLIO: Omit<StoveTopProps, 'idx'>[] = [
   },
 ];
 
+const TITLE_ANIMATION = {
+  initial: { y: '-3vw', opacity: 0 },
+  animate: { y: 0, opacity: 1 },
+  transition: { duration: 0.4, ease: 'easeOut' },
+};
+
 const Portfolio = () => {
   return (
     <Element name="portfolio">
       <section className={css.portfolioSection}>
-        <motion.h1
-          className={css.sectionTitle}
-          initial={{ y: '-3vw', opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.4, ease: 'easeOut' }}
-        >
+        <motion.h1 className={css.sectionTitle} {...TITLE_ANIMATION}>
           Portfolio
         </motion.h1>
         <div className={css.portfolioContainer}>
@@ -71,14 +72,27 @@ const StoveTop = ({ ...props }: StoveTopProps) => {
   return (
     <div ref={ref} className={css.stove}>
       <OnOffButton isFireOn={isFireOn} setIsFireOn={setIsFireOn} />
-      <Pan {...props} isInView={isInView} />
       <div className={css.spoke1} />
       <div className={css.spoke2} />
       <div className={css.spoke3} />
       <div className={css.spoke4} />
+      <Pan {...props} isInView={isInView} />
       {isFireOn && <StoveFire idx={props.idx} isInView={isInView} />}
     </div>
   );
+};
+
+interface OnOffButtonProps {
+  isFireOn: boolean;
+  setIsFireOn: (isFireOn: boolean) => void;
+}
+
+const OnOffButton = ({ isFireOn, setIsFireOn }: OnOffButtonProps) => {
+  const fireOnClassName = React.useMemo(
+    () => classNames(css.button, { [css.buttonOn]: isFireOn }),
+    [isFireOn]
+  );
+  return <button onClick={() => setIsFireOn(!isFireOn)} className={fireOnClassName} />;
 };
 
 interface PanProps extends StoveTopProps {
@@ -90,14 +104,13 @@ const Pan = ({ name, image, link, isInView, idx }: PanProps) => {
     window.open(link, '_blank');
   };
 
+  const panAnimation = React.useMemo(
+    () => getPanAnimation(isInView, idx),
+    [getPanAnimation, isInView, idx]
+  );
+
   return (
-    <motion.div
-      className={css.panContainer}
-      initial={{ opacity: 0 }}
-      animate={isInView ? { rotate: 100, opacity: 1 } : {}}
-      transition={{ delay: 0.15 * idx, duration: 0.7, ease: 'easeOut' }}
-      onClick={handleClick}
-    >
+    <motion.div className={css.panContainer} onClick={handleClick} {...panAnimation}>
       <div className={css.pan}>
         <div className={css.innerPan}>
           <p className={css.panText}>{name}</p>
@@ -109,18 +122,27 @@ const Pan = ({ name, image, link, isInView, idx }: PanProps) => {
   );
 };
 
+function getPanAnimation(isInView: boolean, idx: number) {
+  return {
+    initial: { opacity: 0 },
+    animate: isInView ? { rotate: 100, opacity: 1 } : {},
+    transition: { delay: 0.15 * idx, duration: 0.7, ease: 'easeOut' },
+  };
+}
+
 interface StoveFireProps {
   isInView: boolean;
   idx: number;
 }
 
 const StoveFire = ({ isInView, idx }: StoveFireProps) => {
+  const stoveFireAnimation = React.useMemo(
+    () => getStoveFireAnimation(isInView, idx),
+    [getStoveFireAnimation, isInView, idx]
+  );
+
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
-      transition={{ delay: 0.15 * idx + 0.3, duration: 1, ease: 'easeOut' }}
-    >
+    <motion.div {...stoveFireAnimation}>
       {Array(18)
         .fill(1)
         .map((_, idx) => (
@@ -133,22 +155,16 @@ const StoveFire = ({ isInView, idx }: StoveFireProps) => {
   );
 };
 
-const Fire = ({ ...props }: HTMLProps<HTMLDivElement>) => {
-  return <div className={css.fire} {...props} />;
-};
-
-interface OnOffButtonProps {
-  isFireOn: boolean;
-  setIsFireOn: (isFireOn: boolean) => void;
+function getStoveFireAnimation(isInView: boolean, idx: number) {
+  return {
+    initial: { opacity: 0 },
+    animate: isInView ? { opacity: 1 } : {},
+    transition: { delay: 0.15 * idx + 0.3, duration: 1, ease: 'easeOut' },
+  };
 }
 
-const OnOffButton = ({ isFireOn, setIsFireOn }: OnOffButtonProps) => {
-  return (
-    <button
-      onClick={() => setIsFireOn(!isFireOn)}
-      className={classNames(css.button, isFireOn ? css.buttonOn : null)}
-    />
-  );
+const Fire = ({ ...props }: HTMLProps<HTMLDivElement>) => {
+  return <div className={css.fire} {...props} />;
 };
 
 export default Portfolio;

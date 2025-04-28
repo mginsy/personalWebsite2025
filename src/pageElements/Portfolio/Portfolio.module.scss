@@ -6,7 +6,7 @@ $dark-pan-color: #181818;
 
 .portfolioSection {
     @extend .section;
-    background-color: #2f3130;
+    background-color: $earthy-grey;
     height: fit-content;
     align-items: center;
     padding-bottom: 8vw;
@@ -170,13 +170,13 @@ $dark-pan-color: #181818;
     width: 2.5vw;
     height: 2.5vw;
     border-radius: 50%;
-    background-color: #fca5a5; /* off red */
+    background-color: #fca5a5;
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .buttonOn {
-    background-color: #ef4444; /* bright red */
-    box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.7); /* red glow */
+    background-color: #ef4444;
+    box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.7);
 }
