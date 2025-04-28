@@ -17,7 +17,7 @@ const Header = () => {
     >
       <motion.nav
         className={css.nav}
-        initial={{ y: -150 }}
+        initial={{ y: '-6vw' }}
         animate={{ y: 0 }}
         transition={{ duration: 0.4, ease: 'easeOut' }}
       >
@@ -33,9 +33,9 @@ const Header = () => {
         <Link to="portfolio" smooth={true} duration={500}>
           Portfolio
         </Link>
-        <Link to="contact" smooth={true} duration={500}>
-          Contact
-        </Link>
+        <a href="/ResumeMaxGinsberg.pdf" target="_blank">
+          Resume
+        </a>
       </motion.nav>
     </header>
   );
