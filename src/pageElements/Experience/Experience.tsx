@@ -1,5 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 import { Element } from 'react-scroll';
 
 import css from './Experience.module.scss';
@@ -41,6 +42,12 @@ const EXPERIENCE_TITLE_ANIMATION = {
 };
 
 const Experience = () => {
+  return isMobile ? <ExperienceMobile /> : <ExperienceDesktop />;
+};
+
+// ------------------------- DESKTOP ------------------------------
+
+const ExperienceDesktop = () => {
   return (
     <Element name="experience">
       <section className={css.experienceSection}>
@@ -148,5 +155,63 @@ function getConnectingLineAnimation(isEven: boolean, isInView: boolean) {
     transition: { duration: 0.5 },
   };
 }
+
+// ------------------------- MOBILE ------------------------------
+
+const ExperienceMobile = () => {
+  return (
+    <Element name="experience">
+      <section className={css.experienceSection}>
+        <motion.h1 className={css.sectionTitleMobile} {...EXPERIENCE_TITLE_ANIMATION}>
+          Experience
+        </motion.h1>
+        <div className={css.experiencesContainerMobile}>
+          {EXPERIENCES.map((experience, idx) => (
+            <ExperienceBoxMobile key={idx} idx={idx} {...experience} />
+          ))}
+        </div>
+      </section>
+    </Element>
+  );
+};
+
+interface ExperienceBoxProps {
+  title: string;
+  image: string;
+  dates: string;
+  link: string;
+  idx: number;
+}
+
+const ExperienceBoxMobile = ({ title, image, dates, link, idx }: ExperienceBoxProps) => {
+  const ref = React.useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '0px 0px -40% 0px' });
+  const isEven = idx % 2 == 0;
+  const handleClick = () => {
+    window.open(link, '_blank');
+  };
+
+  const experienceBoxAnimation = React.useMemo(
+    () => getExperienceBoxAnimation(isEven, isInView),
+    [isEven, isInView, getExperienceBoxAnimation]
+  );
+
+  return (
+    <div className={css.experienceBoxLineContainerMobile}>
+      <motion.div
+        ref={ref}
+        className={css.experienceBoxContainerMobile}
+        onClick={handleClick}
+        {...experienceBoxAnimation}
+      >
+        <p className={css.experienceBoxDatesMobile}>{dates}</p>
+        <div className={css.experienceBoxImageTitleMobile}>
+          <img className={css.experienceBoxImageMobile} src={image} alt={'experience image'} />
+          <p className={css.experienceBoxTitleMobile}>{title}</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 export default Experience;

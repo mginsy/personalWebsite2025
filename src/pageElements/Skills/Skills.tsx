@@ -1,5 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import React from 'react';
+import { isMobile } from 'react-device-detect';
 import { Element } from 'react-scroll';
 
 import AWSLogo from './images/AWS.png';
@@ -37,6 +38,12 @@ const TITLE_ANIMATION = {
 };
 
 const Skills = () => {
+  return isMobile ? <SkillsMobile /> : <SkillsDesktop />;
+};
+
+// ------------------------- DESKTOP ------------------------------
+
+const SkillsDesktop = () => {
   const ref = React.useRef(null);
   const isSkillSectionInView = useInView(ref, { once: true, margin: '0px 0px -50% 0px' });
   return (
@@ -84,6 +91,63 @@ const Skill = ({ name, image, idx, startAnimation }: SkillProps) => {
 };
 
 function getSkillAnimation(startAnimation: boolean, idx: number) {
+  return {
+    initial: { y: '3vw', opacity: 0 },
+    animate: startAnimation ? { y: 0, opacity: 1 } : {},
+    transition: { delay: 0.05 * idx, duration: 0.4, ease: 'easeOut' },
+  };
+}
+
+// ------------------------- MOBILE ------------------------------
+
+const SkillsMobile = () => {
+  const ref = React.useRef(null);
+  const isSkillSectionInView = useInView(ref, { once: true, margin: '0px 0px -30% 0px' });
+  return (
+    <Element name="skills">
+      <section className={css.skillsSection}>
+        <motion.h1 ref={ref} className={css.sectionTitleMobile} {...TITLE_ANIMATION}>
+          Skills
+        </motion.h1>
+        <div className={css.skillsContainerMobile}>
+          {SKILLS.map((skill, idx) => (
+            <SkillMobile
+              key={idx}
+              idx={idx}
+              name={skill.name}
+              image={skill.image}
+              startAnimation={isSkillSectionInView}
+            />
+          ))}
+        </div>
+      </section>
+    </Element>
+  );
+};
+
+interface SkillMobileProps {
+  name: string;
+  image: string;
+  idx: number;
+  startAnimation: boolean;
+}
+
+const SkillMobile = ({ name, image, idx, startAnimation }: SkillMobileProps) => {
+  const skillAnimation = React.useMemo(
+    () => getSkillMobileAnimation(startAnimation, idx),
+    [getSkillMobileAnimation, startAnimation, idx]
+  );
+  return (
+    <motion.div className={css.skillContainerMobile} {...skillAnimation}>
+      <p className={css.skillNameMobile}>{name}</p>
+      <div className={css.skillImageContainerMobile}>
+        <img className={css.skillImageMobile} src={image} alt={name} />
+      </div>
+    </motion.div>
+  );
+};
+
+function getSkillMobileAnimation(startAnimation: boolean, idx: number) {
   return {
     initial: { y: '3vw', opacity: 0 },
     animate: startAnimation ? { y: 0, opacity: 1 } : {},

@@ -2,6 +2,7 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { motion } from 'motion/react';
+import { isMobile } from 'react-device-detect';
 import { Element } from 'react-scroll';
 
 import css from './About.module.scss';
@@ -21,6 +22,12 @@ const DESCRIPTION_ANIMATION_2 = {
 };
 
 const About = () => {
+  return isMobile ? <AboutMobile /> : <AboutDesktop />;
+};
+
+// ------------------------- DESKTOP ------------------------------
+
+const AboutDesktop = () => {
   return (
     <Element name="about">
       <div className={css.aboutContainer}>
@@ -102,6 +109,71 @@ const LinkIcons = () => {
         >
           <FontAwesomeIcon
             className={classNames(css.linkIcon, css.linkedInIcon)}
+            icon={faLinkedin}
+            size="2x"
+          />
+        </a>
+      </motion.div>
+    </div>
+  );
+};
+
+// ------------------------- MOBILE ------------------------------
+
+const AboutMobile = () => {
+  return (
+    <Element name="about">
+      <div className={css.aboutContainerMobile}>
+        <LinkIconsMobile />
+        <div className={css.aboutPhotoContainerMobile}>
+          <PhotoAndNameTextMobile />
+          <div className={css.aboutInfoContainerMobile}>
+            <motion.h1 className={css.aboutTextTitleMobile} {...DESCRIPTION_ANIMATION_1}>
+              {'Full stack software developer based in Seattle'}
+            </motion.h1>
+            <motion.p className={css.aboutTextDescriptionMobile} {...DESCRIPTION_ANIMATION_2}>
+              {'Also an expert gardener, cook, and a very ameteur soccer player'}
+            </motion.p>
+          </div>
+        </div>
+      </div>
+    </Element>
+  );
+};
+
+const PhotoAndNameTextMobile = () => {
+  return (
+    <>
+      <motion.img src={fullBody} className={css.photoMobile} {...PHOTO_ANIMATION} />
+      <motion.h1 className={css.nameTextMobile} {...NAME_ANIMATION}>
+        Max
+        <br />
+        Ginsberg
+      </motion.h1>
+    </>
+  );
+};
+
+const LinkIconsMobile = () => {
+  return (
+    <div className={css.linkIconsContainerMobile}>
+      <motion.div {...LINK_ICON_ANIMATION_1}>
+        <a href={'https://github.com/mginsy'} target="_blank" rel="noreferrer">
+          <FontAwesomeIcon
+            className={classNames(css.linkIconMobile, css.githubIcon)}
+            icon={faGithub}
+            size="2x"
+          />
+        </a>
+      </motion.div>
+      <motion.div {...LINK_ICON_ANIMATION_2}>
+        <a
+          href={'https://www.linkedin.com/in/max-ginsberg-729215159/'}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <FontAwesomeIcon
+            className={classNames(css.linkIconMobile, css.linkedInIcon)}
             icon={faLinkedin}
             size="2x"
           />

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { motion } from 'motion/react';
+import { isMobile } from 'react-device-detect';
 import { Link } from 'react-scroll';
 
 import css from './Header.module.scss';
@@ -12,6 +13,10 @@ const HEADER_ANIMATION = {
 };
 
 const Header = () => {
+  return !isMobile ? <HeaderDesktop /> : null;
+};
+
+const HeaderDesktop = () => {
   const scrollDirection = useScrollDirection();
 
   return (
