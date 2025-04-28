@@ -1,6 +1,8 @@
 @import "../../styles/variables.module.scss";
 @import "../../styles/components.module.scss";
 
+// ------------------------- DESKTOP ------------------------------
+
 .experienceSection {
     @extend .section;
     background-color: $forest-green;
@@ -62,7 +64,7 @@
 
     .connectingLine {
         border-top: 5px $earthy-brown dashed;
-        width: 59vw;
+        width: 57vw;
         height: 7vw;
     }
     
@@ -92,4 +94,56 @@
     height: 100%;
     background-color: $forest-green;
     z-index: 10;
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.experiencesContainerMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7vw;
+    padding-bottom: 5vw;
+}
+
+.experienceBoxLineContainerMobile {
+    display: flex;
+    align-items: flex-end;
+
+    .experienceBoxContainerMobile {
+        display: flex;
+        width: 80vw;
+        height: 40vw;
+        border: 5px $earthy-brown dashed;
+        border-radius: 4vw;
+        padding: 1vw;
+        margin: 1vw;
+        flex-direction: column;
+        cursor: pointer;
+
+        .experienceBoxDatesMobile {
+            font-size: 4vw;
+            margin: 0;
+            padding: .5vw;
+        }
+        
+        .experienceBoxImageTitleMobile {
+            gap: 1vw;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            .experienceBoxImageMobile {
+                height: 25vw;
+                object-fit: cover;
+                max-width: 35%;
+                max-height: 25vw;
+                height: auto;
+            }
+            .experienceBoxTitleMobile {
+                font-size: 6vw;
+                max-width: 40%;
+            }
+        }       
+    }
 }

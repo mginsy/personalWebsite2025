@@ -12,6 +12,8 @@ $dark-pan-color: #181818;
     padding-bottom: 8vw;
 }
 
+// ------------------------- DESKTOP ------------------------------
+
 .portfolioContainer {
     padding-top: 8vw;
     display: flex;
@@ -97,6 +99,13 @@ $dark-pan-color: #181818;
     height: .5vw;
 }
 
+.fire {
+    position: absolute;
+    background: linear-gradient(45deg, #ff4500, #ff6347);
+    clip-path: polygon(50% 0%, 70% 40%, 50% 100%, 30% 40%);
+    animation: flicker 1.5s infinite alternate
+}
+
 .stove {
     position: relative;
     width: 12.5vw;
@@ -129,15 +138,12 @@ $dark-pan-color: #181818;
         left: -2.5vw;
     }
 
-    .fire {
-        position: absolute;
+    .fireDesktop {
+        @extend .fire;
         width: 4vw;
         height: 20vw;
         bottom: -3.7vw;
         left: 4.25vw;
-        background: linear-gradient(45deg, #ff4500, #ff6347);
-        clip-path: polygon(50% 0%, 70% 40%, 50% 100%, 30% 40%);
-        animation: flicker 1.5s infinite alternate
     }
 }
 
@@ -169,6 +175,141 @@ $dark-pan-color: #181818;
     top: -8.5vw;
     width: 2.5vw;
     height: 2.5vw;
+    border-radius: 50%;
+    background-color: #fca5a5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.portfolioContainerMobile {
+    padding-top: 8vw;
+    display: flex;
+    gap: 30vw;
+    width: 40vw;
+    flex-wrap: wrap;
+    padding-bottom: 15vw;
+}
+
+.panContainerMobile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    height: 45vw;
+    z-index: 5;
+    top: -5.1vw;
+    left: -5.1vw;
+    cursor: pointer;
+
+    .panMobile {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45vw;
+        height: 45vw;
+        background-color: $dark-pan-color;
+        border-radius: 50%;
+        z-index: 2;
+    
+        .innerPanMobile {
+            width: 39vw;
+            height: 39vw;
+            background-color: $light-pan-color;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            rotate: -145deg;
+
+            .panTextMobile {
+                font-size: 3vw;
+            }
+
+            .panPhotoMobile {
+                max-width: 24vw;
+                max-height: 24vw;
+                border-radius: 3vw;
+                margin-bottom: 3vw;
+            }
+        }
+    }
+    
+    .handleMobile {
+        position: absolute;
+        width: 9vw;
+        height: 51vw;
+        background-color: $light-pan-color;
+        border-radius: 6vw;
+        bottom: -30vw;
+        z-index: 1;
+    }    
+}
+
+.verticalSpokeMobile {
+    @extend .spoke;
+    width: 1.5vw;
+    height: 15vw;
+}
+
+.horizontalSpokeMobile {
+    @extend .spoke;
+    width: 15vw;
+    height: 1.5vw;
+}
+
+.stoveMobile {
+    position: relative;
+    width: 36vw;
+    height: 36vw;
+    border-radius: 50%;
+    border: 1.5vw $black solid;
+    rotate: 45deg;
+
+    .spoke1Mobile {
+        @extend .verticalSpokeMobile;
+        bottom: -7.5vw;
+        right: 18vw;
+    }
+
+    .spoke2Mobile {
+        @extend .verticalSpokeMobile;
+        top: -7.5vw;
+        right: 18vw;
+    }
+
+    .spoke3Mobile {
+        @extend .horizontalSpokeMobile;
+        top: 18vw;
+        right: -7.5vw;
+    }
+
+    .spoke4Mobile {
+        @extend .horizontalSpokeMobile;
+        top: 18vw;
+        left: -7.5vw;
+    }
+
+    .fireMobile {
+        @extend .fire;
+        width: 12vw;
+        height: 60vw;
+        bottom: -11.1vw;
+        left: 12.75vw;
+    }
+}
+
+.buttonMobile {
+    position: absolute;
+    top: -25.5vw;
+    width: 7.5vw;
+    height: 7.5vw;
     border-radius: 50%;
     background-color: #fca5a5;
     border: none;
