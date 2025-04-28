@@ -6,7 +6,13 @@
 }
 
 .section {
-    padding: 4rem 2rem;
+    padding: 1vw 3vw;
     background: #1e1e1e;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionTitle {
+    font-size: 2vw;
 }

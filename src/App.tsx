@@ -2,7 +2,7 @@ import React from 'react';
 
 import css from './App.module.scss';
 import { Header } from './components';
-import { About, Experience, Skills, Portfolio, Contact } from './pageElements';
+import { About, Experience, Skills, Portfolio } from './pageElements';
 
 export interface PageElement {
   name: string;
@@ -17,7 +17,6 @@ const App = () => {
       <Experience />
       <Skills />
       <Portfolio />
-      <Contact />
     </div>
   );
 };
