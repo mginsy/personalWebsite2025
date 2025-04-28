@@ -16,11 +16,6 @@
     display: relative;
 }
 
-.photo {
-    width: 25vw;
-    padding-left: 10vw;
-}
-
 .aboutInfoCol {
     width: 45vw;
     display: flex;
@@ -46,43 +41,6 @@
     font-size: 1.2vw;
 }
 
-.nameText {
-    position: absolute;
-    color: $off-black;
-    font-size: 5.3vw;
-    font-weight: 500;
-    text-wrap: nowrap;
-    left: 3vw;
-    bottom: 18vw;
-}
-
-.linkIconsContainer {
-    position: absolute;
-    display: flex;
-    bottom: 8vw;
-    left: 3vw;
-    gap: 2vw;
-}
-
-.linkIcon {
-    font-size: 3vw;
-    color: $off-black;
-}
-
-.linkIcon {
-    font-size: 3vw;
-    color: $off-black;
-    transition: color 0.2s ease;
-}
-
-.linkedInIcon:hover {
-    color: $linkedin-blue;
-}
-
-.githubIcon:hover {
-    color: $github-purple;
-}
-
 // ------------------------- MOBILE ------------------------------
 
 .aboutContainerMobile {
@@ -98,21 +56,6 @@
     align-items: end;
     justify-content: center;
     display: relative;
-}
-
-.photoMobile {
-    width: 65vw;
-    padding-left: 10vw;
-}
-
-.nameTextMobile {
-    position: absolute;
-    color: $off-black;
-    font-size: 10vw;
-    font-weight: 500;
-    text-wrap: nowrap;
-    left: 7vw;
-    top: 5vw;
 }
 
 .aboutInfoContainerMobile {
@@ -135,17 +78,4 @@
 .aboutTextDescriptionMobile {
     color: $off-black;
     font-size: 3vw;
-}
-
-.linkIconsContainerMobile {
-    position: absolute;
-    display: flex;
-    bottom: 20vw;
-    left: 6vw;
-    gap: 2vw;
-}
-
-.linkIconMobile {
-    font-size: 10vw;
-    color: $off-black;
 }

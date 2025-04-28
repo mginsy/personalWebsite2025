@@ -1,0 +1,40 @@
+@import "../../../styles/variables.module.scss";
+
+// ------------------------- DESKTOP ------------------------------
+
+.linkIconsContainer {
+    position: absolute;
+    display: flex;
+    bottom: 8vw;
+    left: 3vw;
+    gap: 2vw;
+}
+
+.linkIcon {
+    font-size: 3vw;
+    color: $off-black;
+    transition: color 0.2s ease;
+}
+
+.linkedInIcon:hover {
+    color: $linkedin-blue;
+}
+
+.githubIcon:hover {
+    color: $github-purple;
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.linkIconsContainerMobile {
+    position: absolute;
+    display: flex;
+    bottom: 10vw;
+    left: 6vw;
+    gap: 2vw;
+}
+
+.linkIconMobile {
+    font-size: 10vw;
+    color: $off-black;
+}
