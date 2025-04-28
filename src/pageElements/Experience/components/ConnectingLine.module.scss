@@ -1,0 +1,34 @@
+@import "../../../styles/variables.module.scss";
+
+.connectingLine {
+    border-top: 5px $earthy-brown dashed;
+    width: 57vw;
+    height: 7vw;
+}
+
+.connectingLineLeft {
+    @extend .connectingLine;
+    border-left: 5px $earthy-brown dashed;
+    border-top-left-radius: 4vw;
+}
+
+.connectingLineRight {
+    @extend .connectingLine;
+    border-right: 5px $earthy-brown dashed;
+    border-top-right-radius: 4vw;
+}
+
+.maskContainer {
+    position: relative;
+    overflow: hidden;
+}
+
+.maskOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $forest-green;
+    z-index: 10;
+}
