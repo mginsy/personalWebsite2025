@@ -57,14 +57,6 @@ const Experience = () => {
   );
 };
 
-function getExperienceBoxAnimation(isEven: boolean, isInView: boolean) {
-  return {
-    initial: { x: isEven ? '-12vw' : '12vw', opacity: 0 },
-    animate: isInView ? { x: 0, opacity: 1 } : {},
-    transition: { delay: 0.3, duration: 0.4, ease: 'easeOut' },
-  };
-}
-
 interface ExperienceBoxProps {
   title: string;
   image: string;
@@ -118,11 +110,11 @@ const ExperienceBox = ({ title, image, dates, link, idx }: ExperienceBoxProps) =
   );
 };
 
-function getConnectingLineAnimation(isEven: boolean, isInView: boolean) {
+function getExperienceBoxAnimation(isEven: boolean, isInView: boolean) {
   return {
-    initial: { x: 0 },
-    animate: isInView ? { x: isEven ? '100%' : '-100%' } : {},
-    transition: { duration: 0.5 },
+    initial: { x: isEven ? '-12vw' : '12vw', opacity: 0 },
+    animate: isInView ? { x: 0, opacity: 1 } : {},
+    transition: { delay: 0.3, duration: 0.4, ease: 'easeOut' },
   };
 }
 
@@ -148,5 +140,13 @@ const ConnectingLine = ({ idx }: ConnectingLineProps) => {
     </div>
   );
 };
+
+function getConnectingLineAnimation(isEven: boolean, isInView: boolean) {
+  return {
+    initial: { x: 0 },
+    animate: isInView ? { x: isEven ? '100%' : '-100%' } : {},
+    transition: { duration: 0.5 },
+  };
+}
 
 export default Experience;

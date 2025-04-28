@@ -5,6 +5,12 @@ import { Link } from 'react-scroll';
 import css from './Header.module.scss';
 import useScrollDirection from '../utils/useScrollDirection';
 
+const HEADER_ANIMATION = {
+  initial: { y: '-6vw' },
+  animate: { y: 0 },
+  transition: { duration: 0.4, ease: 'easeOut' },
+};
+
 const Header = () => {
   const scrollDirection = useScrollDirection();
 
@@ -15,12 +21,7 @@ const Header = () => {
         scrollDirection === 'down' ? css.headerHidden : css.headerVisible
       )}
     >
-      <motion.nav
-        className={css.nav}
-        initial={{ y: '-6vw' }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.4, ease: 'easeOut' }}
-      >
+      <motion.nav className={css.nav} {...HEADER_ANIMATION}>
         <Link to="about" smooth={true} duration={500}>
           About
         </Link>
