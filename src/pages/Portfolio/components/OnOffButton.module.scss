@@ -1,0 +1,34 @@
+// ------------------------- DESKTOP ------------------------------
+
+.button {
+    position: absolute;
+    top: -8.5vw;
+    width: 2.5vw;
+    height: 2.5vw;
+    border-radius: 50%;
+    background-color: #fca5a5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.buttonMobile {
+    position: absolute;
+    top: -25.5vw;
+    width: 7.5vw;
+    height: 7.5vw;
+    border-radius: 50%;
+    background-color: #fca5a5;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+// ------------------------- GENERAL ------------------------------
+
+.buttonOn {
+    background-color: #ef4444;
+    box-shadow: 0 0 15px 5px rgba(239, 68, 68, 0.7);
+}

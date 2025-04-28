@@ -1,0 +1,124 @@
+$light-pan-color: #202020;
+$dark-pan-color: #181818;
+
+// ------------------------- DESKTOP ------------------------------
+
+.panContainer {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 15vw;
+    z-index: 5;
+    top: -1.7vw;
+    left: -1.7vw;
+    cursor: pointer;
+
+    .pan {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 15vw;
+        height: 15vw;
+        background-color: $dark-pan-color;
+        border-radius: 50%;
+        z-index: 2;
+    
+        .innerPan {
+            width: 13vw;
+            height: 13vw;
+            background-color: $light-pan-color;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            rotate: -145deg;
+
+            .panText {
+                font-size: 1vw;
+            }
+
+            .panPhoto {
+                max-width: 8vw;
+                max-height: 8vw;
+                border-radius: 1vw;
+                margin-bottom: 1vw;
+            }
+        }
+    }
+    
+    .handle {
+        position: absolute;
+        width: 3vw;
+        height: 17vw;
+        background-color: $light-pan-color;
+        border-radius: 2vw;
+        bottom: -10vw;
+        z-index: 1;
+    }    
+}
+
+// ------------------------- MOBILE ------------------------------
+
+.panContainerMobile {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45vw;
+    height: 45vw;
+    z-index: 5;
+    top: -5.1vw;
+    left: -5.1vw;
+    cursor: pointer;
+
+    .panMobile {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 45vw;
+        height: 45vw;
+        background-color: $dark-pan-color;
+        border-radius: 50%;
+        z-index: 2;
+    
+        .innerPanMobile {
+            width: 39vw;
+            height: 39vw;
+            background-color: $light-pan-color;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            rotate: -145deg;
+
+            .panTextMobile {
+                font-size: 3vw;
+            }
+
+            .panPhotoMobile {
+                max-width: 24vw;
+                max-height: 24vw;
+                border-radius: 3vw;
+                margin-bottom: 3vw;
+            }
+        }
+    }
+    
+    .handleMobile {
+        position: absolute;
+        width: 9vw;
+        height: 51vw;
+        background-color: $light-pan-color;
+        border-radius: 6vw;
+        bottom: -30vw;
+        z-index: 1;
+    }    
+}
