@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 
 import css from './PhotoAndNameText.module.scss';
-import fullBody from '../images/fullBody.png';
+import fullBody from '../../../images/fullBody.png';
 
 const PHOTO_ANIMATION = {
   initial: { x: '-3vw', y: '8vw', opacity: 0.5 },

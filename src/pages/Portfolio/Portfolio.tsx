@@ -3,10 +3,10 @@ import { isMobile } from 'react-device-detect';
 import { Element } from 'react-scroll';
 
 import { StoveTop, StoveTopMobile, StoveTopProps } from './components/StoveTop';
-import lafoodlistPhoto from './images/lafoodlist.png';
-import seattleSpursPhoto from './images/seattlespurs.png';
-import wordlePhoto from './images/wordle.png';
 import css from './Portfolio.module.scss';
+import lafoodlistPhoto from '../../images/lafoodlist.png';
+import seattleSpursPhoto from '../../images/seattlespurs.png';
+import wordlePhoto from '../../images/wordle.png';
 
 const PORTFOLIO: Omit<StoveTopProps, 'idx'>[] = [
   {

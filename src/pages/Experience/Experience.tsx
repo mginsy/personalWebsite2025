@@ -4,9 +4,9 @@ import { Element } from 'react-scroll';
 
 import { ExperienceBox, ExperienceBoxMobile, ExperienceBoxProps } from './components/ExperienceBox';
 import css from './Experience.module.scss';
-import accentureLogo from './images/accenture.png';
-import edwardsLogo from './images/edwards.png';
-import palantirLogo from './images/palantir.png';
+import accentureLogo from '../../images/accenture.png';
+import edwardsLogo from '../../images/edwards.png';
+import palantirLogo from '../../images/palantir.png';
 
 const EXPERIENCES: Omit<ExperienceBoxProps, 'numExperiences' | 'idx'>[] = [
   {
