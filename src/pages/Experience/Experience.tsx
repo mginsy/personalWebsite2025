@@ -38,7 +38,7 @@ const EXPERIENCES: Omit<ExperienceBoxProps, 'numExperiences' | 'idx'>[] = [
 const EXPERIENCE_TITLE_ANIMATION = {
   initial: { y: '-3vw', opacity: 0 },
   animate: { y: 0, opacity: 1 },
-  transition: { duration: 0.4, ease: 'easeOut' },
+  transition: { duration: 0.5, ease: 'easeOut' },
 };
 
 const Experience = () => {
@@ -50,10 +50,10 @@ const Experience = () => {
 const ExperienceDesktop = () => {
   return (
     <Element name="experience">
-      <section className={css.experienceSection}>
-        <motion.h1 className={css.sectionTitle} {...EXPERIENCE_TITLE_ANIMATION}>
+      <motion.section className={css.experienceSection} {...EXPERIENCE_TITLE_ANIMATION}>
+        <h1 className={css.sectionTitle} {...EXPERIENCE_TITLE_ANIMATION}>
           Experience
-        </motion.h1>
+        </h1>
         <div className={css.experiencesContainer}>
           {EXPERIENCES.map((experience, idx) => (
             <ExperienceBox
@@ -64,7 +64,7 @@ const ExperienceDesktop = () => {
             />
           ))}
         </div>
-      </section>
+      </motion.section>
     </Element>
   );
 };
@@ -74,10 +74,10 @@ const ExperienceDesktop = () => {
 const ExperienceMobile = () => {
   return (
     <Element name="experience">
-      <section className={css.experienceSection}>
-        <motion.h1 className={css.sectionTitleMobile} {...EXPERIENCE_TITLE_ANIMATION}>
+      <motion.section className={css.experienceSection} {...EXPERIENCE_TITLE_ANIMATION}>
+        <h1 className={css.sectionTitleMobile} {...EXPERIENCE_TITLE_ANIMATION}>
           Experience
-        </motion.h1>
+        </h1>
         <div className={css.experiencesContainerMobile}>
           {EXPERIENCES.map((experience, idx) => (
             <ExperienceBoxMobile
@@ -88,7 +88,7 @@ const ExperienceMobile = () => {
             />
           ))}
         </div>
-      </section>
+      </motion.section>
     </Element>
   );
 };

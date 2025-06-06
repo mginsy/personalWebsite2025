@@ -12,35 +12,42 @@ import seattlespurs from './images/seattlespurs.png';
 import wordle from './images/wordle.png';
 import { About, Experience, Skills, Portfolio } from './pages';
 
+const preloadBackground: string[] = [nature];
+
 const preloadImageList: string[] = [
   accenture,
   edwards,
   fullBody,
   headshot,
   lafoodlist,
-  nature,
   palantir,
   seattlespurs,
   wordle,
 ];
 
 const App = () => {
-  const { imagesPreloaded } = useImagePreloader(preloadImageList);
+  const { imagesPreloaded } = useImagePreloader(preloadBackground);
 
   return (
     <div className={css.container}>
       <div className={css.backgroundImage} />
-      {imagesPreloaded && (
-        <>
-          <Header />
-          <About />
-          <Experience />
-          <Skills />
-          <Portfolio />
-        </>
-      )}
+      {imagesPreloaded && <Sections />}
     </div>
   );
+};
+
+const Sections = () => {
+  const { imagesPreloaded } = useImagePreloader(preloadImageList);
+
+  return imagesPreloaded ? (
+    <>
+      <Header />
+      <About />
+      <Experience />
+      <Skills />
+      <Portfolio />
+    </>
+  ) : null;
 };
 
 export default App;
