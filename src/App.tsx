@@ -1,5 +1,5 @@
 import css from './App.module.scss';
-import { Header } from './components';
+import { Header, PasswordGate } from './components';
 import useImagePreloader from './hooks/useImagePreloader';
 import accenture from './images/accenture.png';
 import edwards from './images/edwards.png';
@@ -29,10 +29,12 @@ const App = () => {
   const { imagesPreloaded } = useImagePreloader(preloadBackground);
 
   return (
-    <div className={css.container}>
-      <div className={css.backgroundImage} />
-      {imagesPreloaded && <Sections />}
-    </div>
+    <PasswordGate>
+      <div className={css.container}>
+        <div className={css.backgroundImage} />
+        {imagesPreloaded && <Sections />}
+      </div>
+    </PasswordGate>
   );
 };
 

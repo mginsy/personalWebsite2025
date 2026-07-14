@@ -7,8 +7,15 @@ import css from './Experience.module.scss';
 import accentureLogo from '../../images/accenture.png';
 import edwardsLogo from '../../images/edwards.png';
 import palantirLogo from '../../images/palantir.png';
+import qualtricsLogo from '../../images/qualtrics.png';
 
 const EXPERIENCES: Omit<ExperienceBoxProps, 'numExperiences' | 'idx'>[] = [
+  {
+    title: 'Full Stack Software Engineer',
+    image: qualtricsLogo,
+    link: 'https://www.qualtrics.com/',
+    dates: '2025 - Present',
+  },
   {
     title: 'Full Stack Software Engineer',
     image: palantirLogo,
